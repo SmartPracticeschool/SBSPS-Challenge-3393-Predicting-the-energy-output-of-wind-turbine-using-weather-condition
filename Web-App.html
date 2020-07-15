@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <title>Web-App</title>
+</head>
+
+<body>
+    <nav class="navbar background h-nav-resp">
+        <ul class="nav-list v-class-resp">
+            <div class="logo"><img src="static/image.jfif" alt="logo"></div>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Web-App</a></li>    
+        </ul>
+        <div class="rightNav v-class-resp">
+            <input type="text" name="search" id="search">
+            <button class="btn btn-sm">Search</button>
+        </div>
+        <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+    <section class="background firstSection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <p class="text-big">The Future of Wind Energy</p>
+                <p class="text-small">Wind energy plays an increasing role in the supply of energy world-wide. The energy output of a wind farm is highly dependent on the wind conditions present at its site. If the output can be predicted more accurately, energy suppliers can coordinate the collaborative production of different energy sources more efficiently to avoid costly overproduction.</p>
+                <div class="buttons">
+                    <button class="btn">Web-App</button>
+                    
+                
+
+                </div>
+            </div>
+
+            <div class="secondHalf">
+                <img src="static/image.jfif" alt="wind Image">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="paras">
+        <p class="sectionTag text-big">Our team "Code-Hacker" is here for help </p>
+        <p class="sectionSubTag text-small">Team "Code-Hacker" create a simple Web-App that gives 72 hours prediction of wind-energy in different weather conditions such as Winy,Cloudy,Rainy,Sunny.our Web-App helps End-user to gives unput in a easy way,and helps to get predicted outputs. </p>
+        </div>
+        <div class="thumbnail">
+            <img src="https://source.unsplash.com/collection/190727/900x900?wind power" alt="laptop image" class="imgFluid">
+        </div>
+    </section>
+
+    <section class="section section-left" id="about">
+        <div class="paras">
+        <p class="sectionTag text-big">Bulid software better together on github!</p>
+        <p class="sectionSubTag text-small" style="text-align: center;"><a  href="https://github.com/SmartPracticeschool/SBSPS-Challenge-3393-Predicting-the-energy-output-of-wind-turbine-using-weather-condition">github!</a>
+        </p>
+        </div>
+        <div class="thumbnail">
+            <img src="static/github.jfif" alt="github image" >
+        </div> 
+    </section>
+    <section class="section" id="services">
+        <div class="paras">
+        <p class="sectionTag text-big">Lets connect on Linkedin!</p>
+        
+<p class="sectionSubTag text-small" style="text-align: center;"> <a  href="https://www.linkedin.com/in/aradhana-gupta-2b90b9163/">linkedin!</a>
+         </p>
+        </div>
+        <div class="thumbnail">
+            <img src="static/linkedin.png" alt="laptop image" class="imgFluid">
+        </div>
+    </section>
+     
+     
+    <section class="contact" id="contact">
+        <form methods="POST",action="{{url_for('Web-App')}}">
+            <div class="form">
+                <input class="form-input" type="text" name="name" id="name" placeholder="Enter wind speeds">
+                <input class="form-input" type="text" name="phone" id="phone" placeholder="Enter thoritical power value">
+                <input class="form-input" type="email" name="email" id="email" placeholder="Enter Wind directions">
+                 <textarea class="form-input" name="text" id="text" cols="30" rows="10" placeholder="Enter weather conditions"></textarea>
+                <input type="submit" button class="btn btn-sm btn-dark">Submit</button>
+            </div>
+       
+
+    </section>
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright © 2027 - www.predictcodehacker.com - All rights reserved
+        </p>
+    </footer>
+    <script src="js/resp.js"></script>
+
+</body>
+
+</html
