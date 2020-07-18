@@ -1,0 +1,148 @@
+Importing Libraries
+import pandas as pd
+import numpy as np
+Importing data
+import types
+import pandas as pd
+from botocore.client import Config
+import ibm_boto3
+
+def __iter__(self): return 0
+
+# @hidden_cell
+# The following code accesses a file in your IBM Cloud Object Storage. It includes your credentials.
+# You might want to remove those credentials before you share the notebook.
+client_61b46870208d4c71b4b23e24521d46f5 = ibm_boto3.client(service_name='s3',
+    ibm_api_key_id='--A2Ov7nEa4VsrG6ktPIjcmKABuRtgdgGsr4vof9i2LC',
+    ibm_auth_endpoint="https://iam.cloud.ibm.com/oidc/token",
+    config=Config(signature_version='oauth'),
+    endpoint_url='https://s3.eu-geo.objectstorage.service.networklayer.com')
+
+body = client_61b46870208d4c71b4b23e24521d46f5.get_object(Bucket='windenergymodel-donotdelete-pr-kjyw30rlou9arv',Key='datasets.xlsx')['Body']
+# add missing __iter__ method, so pandas accepts body as file-like object
+if not hasattr(body, "__iter__"): body.__iter__ = types.MethodType( __iter__, body )
+
+data = pd.read_excel(body)
+data.head()
+type(data)
+pandas.core.frame.DataFrame
+data.tail()
+data['Weather conditions'].unique()
+data['Weather conditions'].value_counts()
+data.describe()
+data.shape
+Dataprocessing
+Label encoder
+from sklearn.preprocessing import LabelEncoder
+l=LabelEncoder()
+data["Weather conditions"]=l.fit_transform(data["Weather conditions"])
+datacolumns
+
+Spilting of data¶
+x=data.iloc[:,0:4].values
+y=data.iloc[:,4:5].values
+x
+y
+x.shape
+one hot encoder
+from sklearn.preprocessing import OneHotEncoder
+o= OneHotEncoder()
+z=o.fit_transform(x[:,3:4]).toarray() 
+z.shape
+x=np.delete(x,3,axis=1)
+x=np.concatenate((z,x),axis=1)
+x.shape
+y.shape
+Training the sets
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0)
+x_train.shape
+y_train.shape
+x_test.shape
+y_test.shape
+Multilinear Regression
+from sklearn.linear_model import LinearRegression
+mlr=LinearRegression()
+mlr.fit(x_train,y_train)
+LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+         normalize=False)
+y_pred=mlr.predict(x_test)
+y_test
+from sklearn.metrics import r2_score
+acc=r2_score(y_test,y_pred)
+acc
+-0.0009158045852226682
+Decision Tree Regression
+from sklearn.tree import DecisionTreeRegressor
+dtr=DecisionTreeRegressor(random_state=0)
+dtr.fit(x_train,y_train)
+DecisionTreeRegressor(criterion='mse', max_depth=None, max_features=None,
+           max_leaf_nodes=None, min_impurity_decrease=0.0,
+           min_impurity_split=None, min_samples_leaf=1,
+           min_samples_split=2, min_weight_fraction_leaf=0.0,
+           presort=False, random_state=0, splitter='best')
+dtrpre=dtr.predict(x_test)
+dtrpre])
+y_test
+from sklearn.metrics import r2_score
+a=r2_score(y_test,dtrpre)
+a
+
+dtpred=dtr.predict([[0,1,0,0,6.7,800,100,200]])
+dtpred
+random forest regression
+from sklearn.ensemble import RandomForestRegressor
+rfr=RandomForestRegressor(n_estimators=10,random_state=0)
+rfr.fit(x_train,y_train)
+rfrpre=rfr.predict(x_test)
+import pickle
+pickle.dump(rfr,open('Energy1.pkl','wb'))
+rfrpre
+y_test   
+
+from sklearn.metrics import r2_score
+accuracy=r2_score(y_test,rfrpre)
+accuracy
+-0.09291554082679787
+rfrpred=rfr.predict([[1,0,0,0,2.4,900,600,700]])
+rfrpred
+array([27632.94])
+polynomial regression
+from sklearn .preprocessing import PolynomialFeatures
+polynomial_reg=PolynomialFeatures(degree=4)
+x_polynomial=polynomial_reg.fit_transform(x)
+x
+x_polynomial
+
+polynomial_reg.fit(x_polynomial,y)
+polynomial=LinearRegression()
+polynomial.fit(x_polynomial,Y)
+polynomialpred = polynomial.predict(x_polynomial)
+polynomialpred
+polynomialacc = r2_score(y,polynomialpred)
+polynomialacc
+Feature scaling
+from sklearn.preprocessing import StandardScaler
+s=StandardScaler()
+x_train=s.fit_transform(x_train)
+x_test=s.fit_transform(x_test)
+Data Visualisation
+import matplotlib.pyplot as plt
+plt.scatter(data["Weather conditions"],data["Energy(j)"])
+<matplotlib.collections.PathCollection at 0x7f96d8e14eb8>
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+sns.scatterplot(x = "Weather conditions", y = "Energy(j)", data =)
+
+sns.lineplot(x="Wind Speed (m/s)",y="Energy(j)",data =data)
+
+sns.distplot(data['Energy(j)']
+
+sns.boxplot(x="Weather conditions",y="Energy(j)",data = data)
+
+sns.barplot(x = "Weather conditions",y="Energy(j)",data = data)
+
+
+data.corr()
+sns.heatmap(data.corr(),annot = True )
