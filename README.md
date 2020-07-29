@@ -1,4 +1,6 @@
 # SBSPS-Challenge-3393-Predicting-the-energy-output-of-wind-turbine-using-weather-condition
+By Team Challenge cracker
+Demo:http://127.0.0.1:5000/home
 Description of Project:
 Wind energy plays an increasing role in the supply of energy world-wide. The energy output of a wind farm is highly dependent on the wind conditions present at its site. If the output can be predicted more accurately, energy suppliers can coordinate the collaborative production of different energy sources more efficiently to avoid costly overproduction.
 Solution Offered through this project:
